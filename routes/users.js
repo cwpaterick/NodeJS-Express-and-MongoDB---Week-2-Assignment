@@ -6,7 +6,7 @@ const User = require('../models/user');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', authenticate.verifyAdmin, (req, res, next) => {
+router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Campsite.find()
     .then((users) => {
         res.statusCode = 200;
